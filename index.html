@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./nav.css"> -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore-compat.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script> -->
+
+
+
+</head>
+
+<body>
+
+  
+
+  
+  
+  <div class="w-full h-800 flex justify-around items-center " id="div">
+
+    <div>
+      <img src="./pic/logo.jpg" width="100%">
+    </div>
+
+    <div class="flex justify-center items-center flex-col">
+
+      <h1 class="font-bold text-2xl py-4">ADDS</h1>
+      <input type="text" name="" id="one" class="bg-gray-200 my-2 p-2 rounded-2xl	" placeholder="PRODEUCT NAME">
+      <input type="number" name="" id="two" class="bg-gray-200 mb-2 p-2 rounded-2xl	" placeholder="PRODUCT PRICE">
+      <select name="" id="category">
+        <option >select catagory</option>
+        <option value="basketball">basketball</option>
+        <option value="cricket">cricket </option>
+        <option value="football">football </option>
+        <option value="hockey ">hockey </option>
+        <option value="tennis ">tennis </option>
+      </select>
+      <textarea name="" id="four" cols="30" rows="7" class="bg-gray-200 mb-2 rounded-2xl	 text-center"
+        placeholder="ENTER DESCRIPTION"></textarea>
+
+
+      <label for="three" class="flex justify-center items-center w-full cursor-pointer	 ">
+        <!-- <h2 class="font-bold text-2xl">upload pic</h2> -->
+        <img src="./pic/360_F_481134373_0W4kg2yKeBRHNEklk4F9UXtGHdub3tYk.jpg" width="50%">
+      </label>
+      <input type="file" name="" id="three" class="hidden" >
+
+      <button id="postAdd">send</button>
+      <!-- <button id="GEAdd">add</button> -->
+      <!-- <button onclick="">firebase</button> -->
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+
+
+  
+  
+  <button class="w-full text-center bg-blue-400 h-20"><a class="bg-black text-white p-2 " href="./sell.html">
+    see your adds
+  </a></button>
+  
+  
+  
+  <script src="index.js" type="module"></script>
+
+</body>
+
+</html>
