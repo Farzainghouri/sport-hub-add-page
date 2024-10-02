@@ -11,6 +11,8 @@ var category = document.getElementById("category");
 var rate = document.getElementById("two");
 var description = document.getElementById("four");
 var three = document.getElementById("three");
+var uploadpic = document.getElementById("uploadpic");
+var see = document.getElementById("see");
 
 // console.log(cricket.innerHTML);
 
@@ -91,7 +93,8 @@ postAdd.addEventListener("click", sendingg);
 
 // let picUrl = null;
 function sendingg(){
-
+  uploadpic.style.display = "none";
+  see.style.display = "none";
 
 let ProName = naam.value;
 let ProRate = rate.value;
@@ -119,6 +122,8 @@ let ProCata = category.value;
             cata : ProCata,
           });
           console.log("Document written with ID: ", docRef.id);
+          uploadpic.style.display = "flex"
+          see.style.display = "block"
         } catch (e) {
           console.error("Error adding document: ", e);
         }

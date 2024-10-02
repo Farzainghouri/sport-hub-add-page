@@ -91,4 +91,4 @@ function render(){
     
         setTimeout(() => {
         render()
-}, 7000);
+}, 5000);
