@@ -6,12 +6,11 @@
 // var tennis = document.getElementById("tn");
 var postAdd = document.getElementById("postAdd");
 // var getAdd = document.getElementById("GEAdd");
-var category = document.getElementById("category");
-
 var naam = document.getElementById("one");
+var category = document.getElementById("category");
 var rate = document.getElementById("two");
-var three = document.getElementById("three");
 var description = document.getElementById("four");
+var three = document.getElementById("three");
 
 // console.log(cricket.innerHTML);
 
@@ -40,23 +39,25 @@ var description = document.getElementById("four");
 //     ;
 
 // }
-let Imagee = null;
-three.addEventListener("change", handleFileInput);
+// let Imagee = null;
+// // let file = null
+// three.addEventListener("change", handleFileInput);
 
-function handleFileInput(event) {
-    const file = event.target.files[0]; 
-    if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file); 
-        Imagee = reader; 
-    } else {
-        alert("Selected file is not an image.");
-    }
-}
+
+// function handleFileInput(event) {
+    // if (file && file.type.startsWith('image/')) {
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(file); 
+    //     Imagee = reader; 
+    // } else {
+    //     alert("Selected file is not an image.");
+    // }
+// }
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-import {getFirestore, collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+import { initializeApp  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+import {getFirestore, collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
+import {getStorage,ref,uploadBytes,getDownloadURL} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
 
 
 
@@ -74,31 +75,71 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
+console.log("🚀 ~ storage:", storage)
 
-console.log(db);
-postAdd.addEventListener("click", sending);
+// const firebaseApp = getApp();
+// const storage = getStorage();
 
-function sending(){
-    try {
+// 'file' comes from the Blob or File API
+
+
+// console.log(db);
+let file = null;
+console.log("🚀 ~ file:", file)
+postAdd.addEventListener("click", sendingg);
+
+// let picUrl = null;
+function sendingg(){
+
+
+let ProName = naam.value;
+let ProRate = rate.value;
+let ProDecpt = description.value;
+let ProCata = category.value;
+  const file = three.files[0]; 
+  const storageRef = ref(storage, "img/"+file.name);
+  console.log("working");
+  console.log("file after", file.name);
+  console.log("name", ProName);
+  
+  if (category.value !== "select catagory") {
+  
+  uploadBytes(storageRef, file).then((snapshot) => {
+    console.log('Uploaded a blob or file!');
+    getDownloadURL(storageRef)
+  .then((url) => {
+      console.log("pic url", url);
+      try {
         const docRef =  addDoc(collection(db, "product"), {
-          name:  naam.value,
-          price:  rate.value ,
-          url : Imagee.result,
-          despt: description.value,
-          cata : category.value,
-        });
-        console.log("Document written with ID: ", docRef.id);
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
+            name:  ProName,
+            price:  ProRate ,
+            Url : url,
+            despt: ProDecpt,
+            cata : ProCata,
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+
+  }).catch((err) => console.log(err));
+  
+  });
+
+    
+   
 
       rate.value = ""
       naam.value = ""
       description.value = ""
       category.value = ""
-
+      
       console.log("done");
-}
+    }else(
+      alert("error")
+    )
+  }
 
 // async function geting(){
 //     const querySnapshot = await getDocs(collection(db, "product"));

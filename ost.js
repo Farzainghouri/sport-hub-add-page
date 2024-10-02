@@ -51,16 +51,17 @@ geting()
 
 
  function showAdd(ee){ 
+    
     // let slect = category.value;
     // var gara = eval(slect);
     // var image =  Imagee   ;
-    var newnew = { title: ee.name, price: ee.price , img: ee.url, despt: ee.despt,};
+    var newnew = { title: ee.name, price: ee.price , img: ee.Url, despt: ee.despt,};
     var place = { cata: eval(ee.cata)};
     // var diva = eval(ee.cata);
     ads.push(newnew);
     catagory.push(place);
     // console.log(catagory);
-    console.log(ee);
+    // console.log(ee);
 }
 
 // showAdd();
@@ -73,7 +74,7 @@ function render(){
         // catagory[count].cata.innerHTML = "";
         catagory[count].cata.innerHTML +=  `<div>
 
-            <img src=${ads[count].img}  class="addimg"/> 
+          <img src=${ads[count].img}  class="addimg"/> 
             <h3> NAME : ${ads[count].title} </h3> 
             <p> PRICE : $ ${ads[count].price}  </p>
             <p> DESCRIPTION : ${ads[count].despt}  </p>
@@ -88,6 +89,6 @@ function render(){
         
     }
     
-    setTimeout(() => {
-    render()
-}, 3000);
+        setTimeout(() => {
+        render()
+}, 7000);
